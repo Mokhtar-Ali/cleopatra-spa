@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { services } from '@/data/services';
 import { createWhatsAppUrl } from '@/lib/whatsapp';
+import { useLanguage } from '@/context/LanguageContext';
 import type { Language, Service } from '@/types';
 import ServiceCard from '@/components/ui/ServiceCard';
 import ServiceModal from '@/components/ui/ServiceModal';
@@ -64,7 +65,7 @@ function getCardsPerView(): number {
 }
 
 export default function Services() {
-  const [language] = useState<Language>('es');
+  const { language } = useLanguage();
   const labels = LABELS[language];
   const copy = COPY[language];
 

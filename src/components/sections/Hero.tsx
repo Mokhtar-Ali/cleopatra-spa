@@ -1,15 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
+import type { Language } from '@/types';
 import styles from './Hero.module.css';
 
-type HeroLanguage = 'en' | 'es';
-
-const HERO_COPY: Record<
-  HeroLanguage,
-  { eyebrow: string; description: string }
-> = {
+const HERO_COPY: Record<Language, { eyebrow: string; description: string }> = {
   en: {
     eyebrow: 'Welcome to',
     description:
@@ -23,7 +19,7 @@ const HERO_COPY: Record<
 };
 
 export default function Hero() {
-  const [language, setLanguage] = useState<HeroLanguage>('es');
+  const { language, setLanguage } = useLanguage();
   const copy = HERO_COPY[language];
 
   return (

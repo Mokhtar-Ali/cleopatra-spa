@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { reviews } from '@/data/reviews';
+import { useLanguage } from '@/context/LanguageContext';
 import type { Language } from '@/types';
 import styles from './Reviews.module.css';
 
@@ -37,7 +38,7 @@ function getCardsPerView(): number {
 }
 
 export default function Reviews() {
-  const [language] = useState<Language>('es');
+  const { language } = useLanguage();
   const copy = COPY[language];
 
   const [cardsPerView, setCardsPerView] = useState(3);
@@ -134,7 +135,10 @@ export default function Reviews() {
   const scrollToPage = useCallback((page: number) => {
     const viewport = viewportRef.current;
     if (!viewport) return;
-    viewport.scrollTo({ left: page * viewport.clientWidth, behavior: 'smooth' });
+    viewport.scrollTo({
+      left: page * viewport.clientWidth,
+      behavior: 'smooth',
+    });
   }, []);
 
   useEffect(() => {
@@ -148,7 +152,14 @@ export default function Reviews() {
     }, AUTOPLAY_INTERVAL_MS);
 
     return () => clearInterval(id);
-  }, [isVisible, isHovered, prefersReducedMotion, totalPages, autoplayResetKey, scrollToPage]);
+  }, [
+    isVisible,
+    isHovered,
+    prefersReducedMotion,
+    totalPages,
+    autoplayResetKey,
+    scrollToPage,
+  ]);
 
   const restartAutoplay = () => setAutoplayResetKey((key) => key + 1);
 
