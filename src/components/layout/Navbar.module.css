@@ -1,0 +1,142 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: linear-gradient(180deg, #050505 0%, #0b0f1a 100%);
+  border-bottom: 1px solid rgba(214, 169, 61, 0.25);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: auto;
+  width: 140px;
+}
+
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  color: #f5f2ea;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: #f0cf73;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d6a93d, #f0cf73);
+  color: #050505;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(214, 169, 61, 0.35);
+}
+
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(214, 169, 61, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hamburgerBar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #f0cf73;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 0;
+  overflow: hidden;
+  background: #050505;
+  border-top: 1px solid rgba(214, 169, 61, 0.15);
+  transition: max-height 0.3s ease;
+}
+
+.mobileNavOpen {
+  max-height: 320px;
+}
+
+.mobileNavLink {
+  padding: 1rem 1.5rem;
+  color: #f5f2ea;
+  text-decoration: none;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(214, 169, 61, 0.1);
+}
+
+.mobileNavLink:hover,
+.mobileNavLink:focus-visible {
+  color: #f0cf73;
+}
+
+.mobileCta {
+  margin: 1rem 1.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d6a93d, #f0cf73);
+  color: #050505;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media (min-width: 900px) {
+  .desktopNav {
+    display: flex;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .mobileNav {
+    display: none;
+  }
+}
