@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { services } from '@/data/services';
 import { createWhatsAppUrl } from '@/lib/whatsapp';
 import { useLanguage } from '@/context/LanguageContext';
@@ -64,27 +64,47 @@ function getCardsPerView(): number {
   return 3;
 }
 
+const AUTOPLAY_INTERVAL_MS = 4000;
+
+function getStepSize(viewport: HTMLDivElement): number {
+  const track = viewport.firstElementChild as HTMLElement | null;
+  const firstCard = track?.firstElementChild as HTMLElement | null;
+  if (!track || !firstCard) return viewport.clientWidth;
+
+  const gap = parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+  return firstCard.getBoundingClientRect().width + gap;
+}
+
 export default function Services() {
   const { language } = useLanguage();
   const labels = LABELS[language];
   const copy = COPY[language];
 
   const [cardsPerView, setCardsPerView] = useState(3);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isRevealed, setIsRevealed] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [autoplayResetKey, setAutoplayResetKey] = useState(0);
 
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastFocusedCardIndex = useRef<number | null>(null);
+  const currentIndexRef = useRef(0);
 
-  const totalPages = useMemo(
-    () => Math.ceil(services.length / cardsPerView),
+  const maxIndex = useMemo(
+    () => Math.max(services.length - cardsPerView, 0),
     [cardsPerView]
   );
 
-  const clampedPage = Math.min(currentPage, Math.max(totalPages - 1, 0));
+  const clampedIndex = Math.min(currentIndex, maxIndex);
+
+  useEffect(() => {
+    currentIndexRef.current = clampedIndex;
+  }, [clampedIndex]);
 
   useEffect(() => {
     const mobileQuery = window.matchMedia('(max-width: 768px)');
@@ -103,14 +123,27 @@ export default function Services() {
   }, []);
 
   useEffect(() => {
+    const reducedMotionQuery = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
+    const updatePreference = () =>
+      setPrefersReducedMotion(reducedMotionQuery.matches);
+    updatePreference();
+
+    reducedMotionQuery.addEventListener('change', updatePreference);
+    return () =>
+      reducedMotionQuery.removeEventListener('change', updatePreference);
+  }, []);
+
+  useEffect(() => {
     const node = sectionRef.current;
     if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        setIsVisible(entry.isIntersecting);
         if (entry.isIntersecting) {
           setIsRevealed(true);
-          observer.disconnect();
         }
       },
       { threshold: 0.2 }
@@ -128,8 +161,9 @@ export default function Services() {
     const handleScroll = () => {
       if (frame !== null) return;
       frame = requestAnimationFrame(() => {
-        const page = Math.round(viewport.scrollLeft / viewport.clientWidth);
-        setCurrentPage(page);
+        const step = getStepSize(viewport);
+        const index = step > 0 ? Math.round(viewport.scrollLeft / step) : 0;
+        setCurrentIndex(index);
         frame = null;
       });
     };
@@ -141,18 +175,42 @@ export default function Services() {
     };
   }, []);
 
-  const scrollToPage = (page: number) => {
+  const scrollToIndex = useCallback((index: number) => {
     const viewport = viewportRef.current;
     if (!viewport) return;
-    viewport.scrollTo({
-      left: page * viewport.clientWidth,
-      behavior: 'smooth',
-    });
+    const step = getStepSize(viewport);
+    viewport.scrollTo({ left: index * step, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isHovered || prefersReducedMotion || maxIndex <= 0) {
+      return;
+    }
+
+    const id = setInterval(() => {
+      const next = (currentIndexRef.current + 1) % (maxIndex + 1);
+      scrollToIndex(next);
+    }, AUTOPLAY_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, [isVisible, isHovered, prefersReducedMotion, maxIndex, autoplayResetKey, scrollToIndex]);
+
+  const restartAutoplay = () => setAutoplayResetKey((key) => key + 1);
+
+  const handlePrev = () => {
+    scrollToIndex(Math.max(clampedIndex - 1, 0));
+    restartAutoplay();
   };
 
-  const handlePrev = () => scrollToPage(Math.max(clampedPage - 1, 0));
-  const handleNext = () =>
-    scrollToPage(Math.min(clampedPage + 1, totalPages - 1));
+  const handleNext = () => {
+    scrollToIndex(Math.min(clampedIndex + 1, maxIndex));
+    restartAutoplay();
+  };
+
+  const handleDotClick = (index: number) => {
+    scrollToIndex(index);
+    restartAutoplay();
+  };
 
   const handleOpen = (index: number) => {
     lastFocusedCardIndex.current = index;
@@ -175,6 +233,8 @@ export default function Services() {
       id="services"
       ref={sectionRef}
       className={`${styles.services} ${isRevealed ? styles.revealed : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className={styles.header}>
         <span className={styles.eyebrow}>{copy.eyebrow}</span>
@@ -187,7 +247,7 @@ export default function Services() {
           type="button"
           className={styles.navButton}
           onClick={handlePrev}
-          disabled={clampedPage === 0}
+          disabled={clampedIndex === 0}
           aria-label="Previous services"
         >
           <span aria-hidden="true">‹</span>
@@ -214,7 +274,7 @@ export default function Services() {
           type="button"
           className={styles.navButton}
           onClick={handleNext}
-          disabled={clampedPage >= totalPages - 1}
+          disabled={clampedIndex >= maxIndex}
           aria-label="Next services"
         >
           <span aria-hidden="true">›</span>
@@ -222,13 +282,13 @@ export default function Services() {
       </div>
 
       <div className={styles.dots}>
-        {Array.from({ length: totalPages }).map((_, index) => (
+        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
           <button
             key={index}
             type="button"
-            className={`${styles.dot} ${index === clampedPage ? styles.dotActive : ''}`}
+            className={`${styles.dot} ${index === clampedIndex ? styles.dotActive : ''}`}
             aria-label={`Go to slide ${index + 1}`}
-            onClick={() => scrollToPage(index)}
+            onClick={() => handleDotClick(index)}
           />
         ))}
       </div>

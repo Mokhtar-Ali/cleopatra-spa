@@ -159,7 +159,7 @@
 
 .cardImageWrap {
   position: relative;
-  aspect-ratio: 16 / 11;
+  height: 260px;
   overflow: hidden;
   background: #111;
   flex-shrink: 0;
@@ -475,6 +475,10 @@
     flex-basis: calc(50% - 0.75rem);
   }
 
+  .cardImageWrap {
+    height: 280px;
+  }
+
   .modalDialog {
     grid-template-columns: 1fr;
     width: min(760px, calc(100vw - 2rem));
@@ -488,6 +492,10 @@
 @media (min-width: 1101px) {
   .card {
     flex-basis: calc(33.333% - 1rem);
+  }
+
+  .cardImageWrap {
+    height: 320px;
   }
 }
 

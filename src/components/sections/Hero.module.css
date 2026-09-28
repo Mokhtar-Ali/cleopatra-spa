@@ -13,6 +13,12 @@
   background-position: center;
 }
 
+@media (min-width: 900px) {
+  .hero {
+    background-position: center 35%;
+  }
+}
+
 .overlay {
   position: absolute;
   inset: 0;
