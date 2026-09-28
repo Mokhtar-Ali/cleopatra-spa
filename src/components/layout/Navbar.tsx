@@ -37,8 +37,8 @@ export default function Navbar() {
           <Image
             src="https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69d7e0759c84d38e9e7cf828.png"
             alt="Cleopatra Spa"
-            width={160}
-            height={48}
+            width={68}
+            height={68}
             className={styles.logoImage}
             priority
           />
