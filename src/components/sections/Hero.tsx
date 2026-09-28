@@ -23,7 +23,7 @@ const HERO_COPY: Record<
 };
 
 export default function Hero() {
-  const [language, setLanguage] = useState<HeroLanguage>('en');
+  const [language, setLanguage] = useState<HeroLanguage>('es');
   const copy = HERO_COPY[language];
 
   return (
