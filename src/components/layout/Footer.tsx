@@ -7,7 +7,7 @@ import type { Language } from '@/types';
 import styles from './Footer.module.css';
 
 const LOGO_URL =
-  'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69d7e0759c84d38e9e7cf828.png';
+  'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/Logo.jpg';
 const WHATSAPP_URL = 'https://wa.me/573127980535';
 const MAPS_URL = 'https://maps.app.goo.gl/8F3QqHwbraUsuxFq5?g_st=iw';
 const FACEBOOK_URL =
@@ -174,7 +174,12 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Facebook"
               >
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                >
                   <path
                     fill="currentColor"
                     d="M13.5 21v-7.5h2.5l.4-3H13.5V8.4c0-.87.24-1.46 1.49-1.46h1.6V4.32C16.3 4.22 15.36 4 14.26 4c-2.3 0-3.87 1.4-3.87 3.98V10.5H7.9v3h2.49V21h3.11z"
@@ -188,7 +193,12 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Instagram"
               >
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                >
                   <path
                     fill="currentColor"
                     d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm0 5.6a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4zm4.3-5.85a.8.8 0 1 1-1.6 0 .8.8 0 0 1 1.6 0zM20 8.15c-.05-1.06-.29-2-.98-2.7-.7-.7-1.64-.94-2.7-.99C15.19 4.4 8.81 4.4 7.68 4.46c-1.06.05-1.99.29-2.7.99-.7.7-.94 1.64-.99 2.7C3.94 8.81 3.94 15.19 4 16.32c.05 1.06.29 1.99.99 2.7.7.7 1.64.94 2.7.99 1.13.06 7.51.06 8.64 0 1.06-.05 1.99-.29 2.7-.99.7-.7.94-1.64.99-2.7.06-1.13.06-7.5 0-8.63zm-1.44 10.48a2.6 2.6 0 0 1-1.47 1.47c-1.02.4-3.42.31-4.54.31s-3.53.09-4.54-.31a2.6 2.6 0 0 1-1.47-1.47c-.4-1.02-.31-3.42-.31-4.54s-.09-3.53.31-4.54A2.6 2.6 0 0 1 8.02 6.6c1.02-.4 3.42-.31 4.54-.31s3.53-.09 4.54.31c.7.27 1.2.77 1.47 1.47.4 1.02.31 3.42.31 4.54s.09 3.52-.31 4.54z"
@@ -202,7 +212,12 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="TikTok"
               >
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  aria-hidden="true"
+                >
                   <path
                     fill="currentColor"
                     d="M16.6 5.1c-.7-.7-1.1-1.7-1.1-2.7h-2.9v13.4c0 1.2-1 2.2-2.2 2.2a2.2 2.2 0 1 1 0-4.4c.2 0 .4 0 .6.06V10.4a5.2 5.2 0 0 0-.6-.03A5.13 5.13 0 0 0 5.3 15.5 5.13 5.13 0 0 0 10.4 20.6a5.13 5.13 0 0 0 5.1-5.1V9.1c1.1.78 2.4 1.24 3.8 1.24V7.4a4.7 4.7 0 0 1-2.7-1.3z"

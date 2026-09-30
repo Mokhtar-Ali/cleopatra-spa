@@ -65,7 +65,7 @@ export default function Hero() {
 
         <div className={styles.imageFrame}>
           <Image
-            src="https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69dbc99ad7871cddf7841a11.jpeg"
+            src="https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/Hero.jpg"
             alt="Cleopatra Spa treatment room"
             width={560}
             height={700}

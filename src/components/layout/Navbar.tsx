@@ -35,7 +35,7 @@ export default function Navbar() {
           aria-label="Cleopatra Spa home"
         >
           <Image
-            src="https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69d7e0759c84d38e9e7cf828.png"
+            src="https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/Logo.jpg"
             alt="Cleopatra Spa"
             width={68}
             height={68}

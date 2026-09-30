@@ -193,7 +193,14 @@ export default function Services() {
     }, AUTOPLAY_INTERVAL_MS);
 
     return () => clearInterval(id);
-  }, [isVisible, isHovered, prefersReducedMotion, maxIndex, autoplayResetKey, scrollToIndex]);
+  }, [
+    isVisible,
+    isHovered,
+    prefersReducedMotion,
+    maxIndex,
+    autoplayResetKey,
+    scrollToIndex,
+  ]);
 
   const restartAutoplay = () => setAutoplayResetKey((key) => key + 1);
 

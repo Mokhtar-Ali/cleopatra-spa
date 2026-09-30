@@ -36,7 +36,7 @@ export const services: Service[] = [
       why: 'Para sentir la fuerza de la tierra.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69dbb4dc019dc508d374dd9c.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Queen%E2%80%99s%20Walk.jpg',
   },
   {
     en: {
@@ -54,7 +54,7 @@ export const services: Service[] = [
       why: 'Para dejar que tus preocupaciones floten en un río de tranquilidad.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69dbd571b30bc5237126e043.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Nile%E2%80%99s%20Flow.jpg',
   },
   {
     en: {
@@ -73,7 +73,7 @@ export const services: Service[] = [
       why: 'Porque un verdadero soberano dicta dónde y cuándo empieza el placer.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69de7a2a3d4472564486bea7.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Nomad%E2%80%99s%20Secret.jpg',
   },
   {
     en: {
@@ -92,7 +92,7 @@ export const services: Service[] = [
       why: 'Porque un par de manos no es suficiente para alguien de tu estatus.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69dbb55ea4e6aa34cbfb781e.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/Dynasty%20of%20the%20Sun.jpg',
   },
   {
     en: {
@@ -129,7 +129,7 @@ export const services: Service[] = [
       why: 'Para poseer el encanto irresistible de la realeza.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69de7af1b935a2d764bce69c.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Breath%20of%20Nefertiti.jpg',
   },
   {
     en: {
@@ -147,7 +147,7 @@ export const services: Service[] = [
       why: 'Para lavar el polvo del mundo y renacer.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69da36ef019dc508d3368daa.png',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Forbidden%20Oasis.jpg',
   },
   {
     en: {
@@ -166,7 +166,7 @@ export const services: Service[] = [
       why: 'Para descubrir la divinidad dentro de tu propia piel.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69de7b5a3677cf2ce26326ae.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Rite%20of%20Isis.jpg',
   },
   {
     en: {
@@ -185,7 +185,7 @@ export const services: Service[] = [
       why: 'Para sentirse vivo y deseado.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69de7c2badd632fcdc837968.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Serpent%E2%80%99s%20Whisper.jpg',
   },
   {
     en: {
@@ -203,7 +203,7 @@ export const services: Service[] = [
       why: 'Porque incluso un soberano necesita liberar la tensión de dirigir un imperio.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69de7bb201e07d5dde3a360a.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Pharos%20Peak.jpg',
   },
   {
     en: {
@@ -222,6 +222,6 @@ export const services: Service[] = [
       why: 'Es el pináculo del poder y el placer.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69de7c2b190683601a1d4f80.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/The%20Empire%E2%80%99s%20Council.jpg',
   },
 ];
