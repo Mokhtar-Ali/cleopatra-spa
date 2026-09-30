@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
@@ -11,22 +12,47 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const headerRef = useRef<HTMLElement>(null);
+  const pendingHref = useRef<string | null>(null);
+
+  const scrollToTarget = (href: string) => {
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: targetTop - headerHeight, behavior: 'smooth' });
+  };
 
   const handleNavigate = (
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
     event.preventDefault();
-    setIsOpen(false);
 
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isOpen) {
+      pendingHref.current = href;
+      setIsOpen(false);
+      return;
     }
+
+    setIsOpen(false);
+    scrollToTarget(href);
+  };
+
+  const handleMobileNavTransitionEnd = (
+    event: React.TransitionEvent<HTMLElement>
+  ) => {
+    if (event.propertyName !== 'max-height' || isOpen) return;
+
+    const href = pendingHref.current;
+    pendingHref.current = null;
+    if (href) scrollToTarget(href);
   };
 
   return (
-    <header className={styles.navbar}>
+    <header className={styles.navbar} ref={headerRef}>
       <div className={styles.inner}>
         <a
           href="#top"
@@ -83,6 +109,7 @@ export default function Navbar() {
         className={`${styles.mobileNav} ${isOpen ? styles.mobileNavOpen : ''}`}
         aria-label="Mobile"
         aria-hidden={!isOpen}
+        onTransitionEnd={handleMobileNavTransitionEnd}
       >
         {NAV_LINKS.map((link) => (
           <a
@@ -94,6 +121,24 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
+        <div className={styles.mobileLanguage} role="group" aria-label="Language">
+          <button
+            type="button"
+            className={`${styles.mobileLanguageButton} ${language === 'en' ? styles.mobileLanguageButtonActive : ''}`}
+            aria-pressed={language === 'en'}
+            onClick={() => setLanguage('en')}
+          >
+            English
+          </button>
+          <button
+            type="button"
+            className={`${styles.mobileLanguageButton} ${language === 'es' ? styles.mobileLanguageButtonActive : ''}`}
+            aria-pressed={language === 'es'}
+            onClick={() => setLanguage('es')}
+          >
+            Español
+          </button>
+        </div>
         <a
           href="#appointment"
           className={styles.mobileCta}
