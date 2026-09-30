@@ -15,7 +15,7 @@
   justify-content: space-between;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0.5rem 1.5rem;
+  padding: 0.61rem 1.5rem 0.58rem;
 }
 
 .logoLink {
@@ -24,8 +24,8 @@
 }
 
 .logoImage {
-  width: 58px;
-  height: 58px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -135,6 +135,13 @@
   font-weight: 700;
   text-align: center;
   text-decoration: none;
+}
+
+@media (max-width: 899px) {
+  .logoImage {
+    width: 59px;
+    height: 59px;
+  }
 }
 
 @media (min-width: 900px) {

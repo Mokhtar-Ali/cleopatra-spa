@@ -17,6 +17,8 @@ const INSTAGRAM_URL =
 const TIKTOK_URL =
   'https://www.tiktok.com/@cleopatra.spa99?_r=1&_t=ZS-95Ox24QCmN3';
 const CLEOPATRA_SOLUTIONS_URL = 'https://www.cleopatrasolutions.com/';
+const AUDIT_URL = `${CLEOPATRA_SOLUTIONS_URL}?utm_source=cleopatra-spa&utm_medium=footer&utm_campaign=free-audit`;
+const WEBSITE_URL = `${CLEOPATRA_SOLUTIONS_URL}?utm_source=cleopatra-spa&utm_medium=footer&utm_campaign=website-creation`;
 const ADDRESS_TEXT = 'Cr 3 # 5-33 Bocagrande, Cartagena de Indias';
 const WHATSAPP_DISPLAY = '+57 312 7980535';
 
@@ -36,7 +38,8 @@ const COPY: Record<
     ctaLabel: string;
     ctaTitle: string;
     ctaDescription: string;
-    ctaButton: string;
+    ctaAuditButton: string;
+    ctaWebsiteButton: string;
     ctaFooter: string;
     copyright: string;
     builtBy: string;
@@ -51,9 +54,10 @@ const COPY: Record<
     ctaLabel: 'SITIO WEB POR CLEOPATRA SOLUTIONS',
     ctaTitle: '¿Quieres un sitio web como este para tu negocio?',
     ctaDescription:
-      'Creamos sitios web elegantes y adaptados a dispositivos móviles que presentan tus servicios profesionalmente y ayudan a convertir visitantes en clientes.',
-    ctaButton: 'Crear mi sitio web',
-    ctaFooter: 'Sitios web · Automatización · Contenido digital',
+      'Ya sea que tengas sitio o no, te ayudamos con reservas, pagos, portales, CRM y automatización.',
+    ctaAuditButton: 'Pide tu auditoría gratis',
+    ctaWebsiteButton: 'Crea tu sitio web',
+    ctaFooter: 'Sitios web · Portales · Reservas · Pagos · CRM · Auditoría',
     copyright: '© Cleopatra Spa. Todos los derechos reservados.',
     builtBy: 'Desarrollado por',
   },
@@ -66,9 +70,10 @@ const COPY: Record<
     ctaLabel: 'WEBSITE BY CLEOPATRA SOLUTIONS',
     ctaTitle: 'Want a website like this for your business?',
     ctaDescription:
-      'We create elegant, mobile-friendly websites that present your services professionally and help turn visitors into clients.',
-    ctaButton: 'Build My Website',
-    ctaFooter: 'Websites · Automation · Digital content',
+      'Whether you have a site or not, we help with bookings, payments, portals, CRM and automation.',
+    ctaAuditButton: 'Get your free audit',
+    ctaWebsiteButton: 'Create your website',
+    ctaFooter: 'Websites · Portals · Bookings · Payments · CRM · Audit',
     copyright: '© Cleopatra Spa. All Rights Reserved.',
     builtBy: 'Built By',
   },
@@ -238,17 +243,30 @@ export default function Footer() {
             <p className={styles.ctaDescription}>{copy.ctaDescription}</p>
             <p className={styles.ctaFooterText}>{copy.ctaFooter}</p>
           </div>
-          <a
-            className={styles.ctaButton}
-            href={CLEOPATRA_SOLUTIONS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {copy.ctaButton}
-            <span className={styles.ctaArrow} aria-hidden="true">
-              →
-            </span>
-          </a>
+          <div className={styles.ctaActions}>
+            <a
+              className={styles.ctaButton}
+              href={AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {copy.ctaAuditButton}
+              <span className={styles.ctaArrow} aria-hidden="true">
+                →
+              </span>
+            </a>
+            <a
+              className={styles.ctaButtonSecondary}
+              href={WEBSITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {copy.ctaWebsiteButton}
+              <span className={styles.ctaArrow} aria-hidden="true">
+                →
+              </span>
+            </a>
+          </div>
         </div>
 
         <div className={styles.bottomBar}>

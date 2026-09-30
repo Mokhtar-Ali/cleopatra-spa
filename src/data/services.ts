@@ -18,7 +18,7 @@ export const services: Service[] = [
       why: 'Para mantener tu cuerpo listo para cualquier conquista.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69dbb43e019dc508d374c1e4.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/Antony%E2%80%99s%20Triumph.jpg',
   },
   {
     en: {
@@ -111,7 +111,7 @@ export const services: Service[] = [
       why: 'Para recargar tu fuego interior y quemar el estrés.',
     },
     image:
-      'https://assets.cdn.filesafe.space/PLXAq7yqMdE7BJTTiHw3/media/69d7d9c0019dc508d3c6a604.jpeg',
+      'https://pub-ec6b76c0eef842d1bd7d65492c044988.r2.dev/Cleopatra%20Spa/Sacred%20Fire%20of%20Alexandria.jpg',
   },
   {
     en: {
